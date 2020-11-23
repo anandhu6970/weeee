@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>gallery</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="css/animate.css">
+  
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+  
+  <link rel="stylesheet" href="css/flaticon.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="py-3">
+    <div class="container">
+      <div class="row d-flex align-items-start align-items-center px-3 px-md-0">
+        <div class="col-md-4 d-flex mb-2 mb-md-0">
+          <a class="navbar-brand d-flex align-items-center" href="index.html"></span><span>BUDDY<small>BIKE RENTING</small></span></a>
+        </div>
+        <div class="col-md-4 d-flex topper mb-md-0 mb-2 align-items-center">
+          <div class="icon d-flex justify-content-center align-items-center">
+            <span class="fa fa-map"></span>
+          </div>
+          <div class="pr-md-4 pl-md-3 pl-3 text">
+            <p class="con"><span>Free Call</span> <span>+1 234 456 78910</span></p>
+            <p class="con">Call Us Now 24/7 Customer Support</p>
+            </div>
+        </div>
+        <div class="col-md-4 d-flex topper mb-md-0 align-items-center">
+          <div class="icon d-flex justify-content-center align-items-center"><span class="fa fa-paper-plane"></span>
+          </div>
+          <div class="text pl-3 pl-md-3">
+            <p class="hr"><span>Our Location</span></p>
+            <p class="con">NORTH FORT KOCHI,VYPIN</p>
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>
+</div>
+</div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+ <div class="container d-flex align-items-center">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="fa fa-bars"></span> Menu
+ </button>
+ <div class="collapse navbar-collapse" id="ftco-nav">
+   <ul class="navbar-nav m-auto">
+    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+  
+   
+    <li class="nav-item active"><a href="gallery.html" class="nav-link">details</a></li>
+    
+    
+  </ul>
+</div>
+</div>
+</nav>
+<!-- END nav -->
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('biku.jpg');" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-end justify-content-start">
+      <div class="col-md-9 ftco-animate pb-5">
+       <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span> <span>Gallery <i class="fa fa-chevron-right"></i></span></p>
+       <h1 class="mb-3 bread">Gallery</h1>
+     </div>
+   </div>
+ </div>
+</section>
+
+<style>
+
+h1,p{
+  text-align:center; 
+}
+table,th,td {
+  border : 2px solid black;
+   margin-left: auto;
+  margin-right: auto;
+}
+th,td {
+  padding: 9px;
+}
+</style>
+<body>
+<h1>BIKE RENTALS ERA!!</h1>
+<p>AVAILABLITY OF BIKES</p>
+<p id='showtrc'></p>
+<table id="demo"></table>
+<select id="dem" onchange="show()">
+<script>
+var x,xmlhttp,xmlDoc
+xmlhttp = new XMLHttpRequest();
+xmlhttp.open("GET", "index.xml", false);
+xmlhttp.send();
+xmlDoc = xmlhttp.responseXML; 
+x = xmlDoc.getElementsByTagName("bike");
+table="<tr><th>BIKE RENTING</th><th>AVAILABLE</th></tr>";
+for (i = 0; i <x.length; i++) { 
+  table += "<tr onclick='displaytrack(" + i + ")'><td>";
+  table += x[i].getElementsByTagName("bikename")[0].childNodes[0].nodeValue;
+  table += "</td><td>";
+  table +=  x[i].getElementsByTagName("available")[0].childNodes[0].nodeValue;
+  table += "</td></tr>";
+}
+document.getElementById("demo").innerHTML = table;
+
+function displaytrack(i) {
+  document.getElementById("showtrc").innerHTML =
+  "BIKENAME: " +
+  x[i].getElementsByTagName("bikename")[0].childNodes[0].nodeValue +
+  "<br>PICKOFF: " +
+  x[i].getElementsByTagName("pickoff")[0].childNodes[0].nodeValue +
+  "<br>DROP: " + 
+  x[i].getElementsByTagName("drop")[0].childNodes[0].nodeValue +
+  "<br>PRIZE: " +
+  x[i].getElementsByTagName("price")[0].childNodes[0].nodeValue;
+}
+
+        function show()
+        {
+            var value=document.getElementById("dem").value;
+            if(value!="Select Color")
+            {
+                document.bgColor=value;
+                document.cookie="color="+value+";expires=Fri,1 Aug 1970 01:00:00 UTC;";
+            }
+        }
+        window.onload=function()
+        {
+            if(document.cookie.length!=0)
+            {
+                var a=document.cookie.split("=");
+                document.getElementById("dem").value=a[1];
+                document.bgColor=a[1];
+            }
+        }
+    </script>
+
+
+
+
+
+
+</body>
+</html>
+</body>
+</html>
